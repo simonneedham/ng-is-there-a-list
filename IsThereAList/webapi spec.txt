@@ -1,0 +1,49 @@
+
+GET:: list/<listId>
+public static async Task<List> GetListAndListItemsAsync(int listId, string currentUserId)
+public static async Task<List> GetListAsync(int listId)
+
+GET:: list/active
+public static async Task<IEnumerable<List>> GetActiveListsAsync(string currentUserId)
+
+POST:: list
+Payload: { listTypeCode: ''}
+public static async Task CreateNewListAsync(int listTypeId, ApplicationUser owner)
+
+PUT:: list/<listId>
+Payload: { listId: 0, listTypeCode: ''} 
+public static async Task UpdateListAsync(int listId, int newListTypeId, ApplicationUser owner)
+
+DELETE:: list/<list id>
+public static async Task DeleteListAsync(int id, string currentUserId)
+
+GET:: listitem/<id>
+public static async Task<ListItem> GetListItemAsync(int listItemId)
+
+POST:: listitem/
+Payload: { listId: 0, listitem attributes}
+public static async Task CreateNewListItemAsync(ListItem listItem, string currentUserId)
+
+PUT:: listitem/<listitemid>
+Payload: {listItemId: 0, listId: 0, etc..}
+public static async Task UpdateListItemAsync(ListItem listItem, string currentUserId)
+public static async Task PurchaseListItem(int listItemId, string currentUserId)
+
+PUT:: listitem/<listitemid>/purchase
+public static async Task PurchaseListItem(int listItemId, string currentUserId)
+
+DELETE:: listitem/<listItemId>
+public static async Task DeleteListItemAsync(int listItemId, string currentUserId)
+
+GET:: listtypes/notcreated
+public static async Task<List<ListType>> GetListTypesNotCreatedAsync(string currentUserId)
+
+GET:: user/unauthorised
+public static async Task<IEnumerable<ApplicationUser>> GetUnauthorisedUsersAsync()
+
+GET:: user/<user id>/list/owned ??
+public static async Task<List<List>> GetOwnerListsAsync(string ownerUserId)
+
+PUT:: user/authorise/<userIds csv>
+public static async Task AuthoriseUsersAsync(string[] userIds)
+
